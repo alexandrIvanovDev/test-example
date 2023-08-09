@@ -1,0 +1,26 @@
+.textarea {
+    resize: none;
+    border-radius: 6px;
+    border: 2px solid #EDE8F7;
+    padding: 16px;
+    color: #9B99AA;
+    transition: all 0.3s;
+    outline: none;
+
+    font-family: LetoSans, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    height: 100px;
+}
+
+::-webkit-input-placeholder {
+    color: #9B99AA;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+:focus::-webkit-input-placeholder {
+    opacity: 0;
+}

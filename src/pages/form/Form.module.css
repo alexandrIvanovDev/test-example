@@ -1,0 +1,42 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #474747;
+    height: 100vh;
+}
+
+.form {
+    width: 384px;
+    height: 490px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+}
+
+.input {
+    margin-top: 16px;
+}
+
+.select {
+    margin-top: 16px;
+}
+
+.textarea {
+    margin-top: 16px;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.greyBtn {
+    background: grey;
+    margin-right: 16px;
+}
+
+.sendBtn {
+    flex-grow: 1;
+}

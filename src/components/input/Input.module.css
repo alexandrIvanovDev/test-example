@@ -1,31 +1,73 @@
+.group {
+    position: relative;
+    display: block;
+    width: 100%;
+    font-family: LetoSans, sans-serif;
+}
+
 .input {
-    /*width: 392px;*/
     height: 56px;
+    width: 100%;
     border-radius: 8px;
     border: 2px solid #EDE8F7;
-    padding: 22px 16px;
+    padding: 10px 15px 5px;
     transition: all 0.3s;
     outline: none;
 
-    color: #9B99AA;
+    color: #1D1539;
     font-family: LetoSans, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+
+    &::placeholder {
+        color: transparent;
+    }
+
+    &:placeholder-shown ~ .label {
+        font-size: 14px;
+        cursor: text;
+        top: 20px;
+        left: 15px;
+    }
 }
-:hover {
-    border-color: #C0BAD5;
+
+.label {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    display: block;
+    transition: 0.2s;
+    font-size: 10px;
+    color: #9b9b9b;
 }
-:focus {
-    box-shadow: 0 4px 8px 0 rgba(46, 9, 182, 0.06);
-    color: #1D1539;
+
+.input:focus {
+    ~ .label {
+        position: absolute;
+        top: 5px;
+        left: 15px;
+        display: block;
+        transition: 0.2s;
+        font-size: 10px;
+    }
 }
-::-webkit-input-placeholder {
-    color: #9B99AA;
-    opacity: 1;
-    transition: opacity 0.3s ease;
+
+.errorImg {
+    position: absolute;
+    top: 16px;
+    right: 10px;
 }
-:focus::-webkit-input-placeholder {
-    opacity: 0;
+
+.error {
+    border: 2px solid #F8478D;
+}
+
+.errorMessage {
+    color: #F8478D;
+}
+
+.success {
+    border: 2px solid #13C98A;
 }

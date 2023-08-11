@@ -1,13 +1,13 @@
 .input {
     /*width: 392px;*/
     height: 56px;
-    border-radius: 6px;
+    border-radius: 8px;
     border: 2px solid #EDE8F7;
     padding: 22px 16px;
     transition: all 0.3s;
     outline: none;
 
-    color: #1D1539;
+    color: #9B99AA;
     font-family: LetoSans, sans-serif;
     font-size: 14px;
     font-style: normal;
@@ -19,6 +19,7 @@
 }
 :focus {
     box-shadow: 0 4px 8px 0 rgba(46, 9, 182, 0.06);
+    color: #1D1539;
 }
 ::-webkit-input-placeholder {
     color: #9B99AA;

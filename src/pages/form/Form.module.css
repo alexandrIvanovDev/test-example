@@ -40,3 +40,7 @@
 .sendBtn {
     flex-grow: 1;
 }
+
+.error {
+    border: 2px solid #F8478D !important;
+}

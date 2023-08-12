@@ -1,8 +1,5 @@
-import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-
-const setNewUser = createAsyncThunk('user/setNewUser', () => {
-
-})
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {OptionType} from '../../components/select/Select';
 
 const userSlice = createSlice({
     name: 'user',
@@ -25,16 +22,10 @@ export default userSlice.reducer
 export type UserType = {
     name: string
     email: string
-    theme: Theme
+    theme: OptionType
 }
 
 type InitialStateType = {
     user: UserType
     isLogged: boolean
-}
-
-export enum Theme {
-    THEME1 = 'theme1',
-    THEME2 = 'theme2',
-    THEME3 = 'theme3'
 }

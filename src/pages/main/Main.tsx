@@ -23,7 +23,7 @@ export const Main = () => {
                     ? <div style={{marginTop: 20}}>
                         <div><b>ФИО:</b> {name}</div>
                         <div style={{marginTop: 10}}><b>E-mail:</b> {email}</div>
-                        <div style={{marginTop: 10}}><b>Тема:</b> {theme}</div>
+                        <div style={{marginTop: 10}}><b>Тема:</b> {theme.label}</div>
                     </div>
                     : <div style={{marginTop: 20}}>Форма пока не заполнена</div>}
             </div>

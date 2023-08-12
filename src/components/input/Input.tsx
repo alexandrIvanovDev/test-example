@@ -3,6 +3,8 @@ import cl from './Input.module.css'
 import {classNames} from '../../helpers/classNames/classNames';
 import errorImg from '../../assets/img/error.svg'
 import successImg from '../../assets/img/success.svg'
+import {useSelector} from 'react-redux';
+import {AppStateType} from '../../store/store';
 
 interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
     addClass: string;
@@ -14,6 +16,8 @@ interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
 export const Input: FC<PropsType> = (props) => {
 
     const {addClass, value, onChangeValue, error, placeholder, id, ...otherProps} = props
+
+    // const {status} = useSelector((state: AppStateType) => state.app)
 
     return (
         <div className={classNames(cl.group, {}, [addClass])}>
@@ -29,16 +33,16 @@ export const Input: FC<PropsType> = (props) => {
             />
             <label
                 // className={classNames(cl.label, {[cl.errorMessage]: error === 'success' ? cl.success : cl.error})}
-                className={classNames(cl.label, {}, [error === 'error' ? cl.errorMessage : ''])}
+                className={classNames(cl.label, {[cl.errorMessage]: error === 'error'}, [])}
                 htmlFor={id}
             >
                 {/*{error ? error : placeholder}*/}
                 {placeholder}
             </label>
             {error === 'success'
-                ? <img src={successImg} alt="success" className={cl.errorImg}/>
+                ? <img src={successImg} alt="success" className={cl.img}/>
                 : error === 'error'
-                    ? <img src={errorImg} alt="error" className={cl.errorImg}/>
+                    ? <img src={errorImg} alt="error" className={cl.img}/>
                     : ''
             }
         </div>

@@ -16,7 +16,11 @@
     height: 100px;
 }
 
-:focus {
+.textarea:hover {
+    border: 2px solid #C0BAD5;
+}
+
+.textarea:focus {
     box-shadow: 0 4px 8px 0 rgba(46, 9, 182, 0.06);
     color: #1D1539;
 }

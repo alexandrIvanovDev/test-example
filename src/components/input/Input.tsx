@@ -3,28 +3,23 @@ import cl from './Input.module.css'
 import {classNames} from '../../helpers/classNames/classNames';
 import errorImg from '../../assets/img/error.svg'
 import successImg from '../../assets/img/success.svg'
-import {useSelector} from 'react-redux';
-import {AppStateType} from '../../store/store';
 
 interface PropsType extends InputHTMLAttributes<HTMLInputElement> {
     addClass: string;
     value: string;
     onChangeValue: (value: ChangeEvent<HTMLInputElement>) => void;
-    error?: string | null
+    status?: string | null
 }
 
 export const Input: FC<PropsType> = (props) => {
 
-    const {addClass, value, onChangeValue, error, placeholder, id, ...otherProps} = props
-
-    // const {status} = useSelector((state: AppStateType) => state.app)
+    const {addClass, value, onChangeValue, status, placeholder, id, ...otherProps} = props
 
     return (
         <div className={classNames(cl.group, {}, [addClass])}>
             <input
                 type="text"
-                className={classNames(cl.input, {[cl.error]: !!error, [cl.success]: error === 'success'}, [])}
-                    // [error === 'success' ? cl.success : cl.error])
+                className={classNames(cl.input, {[cl.error]: !!status, [cl.success]: status === 'success'}, [])}
                 placeholder={placeholder}
                 id={id}
                 value={value}
@@ -32,16 +27,14 @@ export const Input: FC<PropsType> = (props) => {
                 {...otherProps}
             />
             <label
-                // className={classNames(cl.label, {[cl.errorMessage]: error === 'success' ? cl.success : cl.error})}
-                className={classNames(cl.label, {[cl.errorMessage]: error === 'error'}, [])}
+                className={classNames(cl.label, {[cl.errorMessage]: status === 'error'}, [])}
                 htmlFor={id}
             >
-                {/*{error ? error : placeholder}*/}
                 {placeholder}
             </label>
-            {error === 'success'
+            {status === 'success'
                 ? <img src={successImg} alt="success" className={cl.img}/>
-                : error === 'error'
+                : status === 'error'
                     ? <img src={errorImg} alt="error" className={cl.img}/>
                     : ''
             }

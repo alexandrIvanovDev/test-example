@@ -27,3 +27,8 @@
 .btn:focus {
     color: #fff;
 }
+
+.btn:disabled {
+    cursor: default;
+    background: #cecece;
+}

@@ -33,6 +33,10 @@
     }
 }
 
+.input:hover {
+    border-color: #C0BAD5;
+}
+
 .label {
     position: absolute;
     top: 5px;
@@ -64,10 +68,17 @@
     border: 2px solid #F8478D;
 }
 
+.error:hover {
+    border: 2px solid #F8478D;
+}
+
 .errorMessage {
     color: #F8478D;
 }
 
 .success {
+    border: 2px solid #13C98A;
+}
+.success:hover {
     border: 2px solid #13C98A;
 }

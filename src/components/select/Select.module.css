@@ -13,13 +13,14 @@
     font-family: LetoSans, 'sans-serif';
 }
 
-/*.container:hover {*/
-/*    border: 2px solid #C0BAD5;*/
-/*}*/
+.container:hover {
+    border: 2px solid #C0BAD5;
+}
 
 .container.show {
     border-radius: 6px 6px 0 0;
     color: #1D1539;
+    border: 2px solid #C0BAD5;
 }
 
 .value {
@@ -47,6 +48,7 @@
 
 .options.show {
     display: block;
+    border: 2px solid #C0BAD5;
 }
 
 .option {
@@ -89,10 +91,10 @@
 
 .label.show {
     font-size: 10px;
-    top: 10px;
+    top: 8px;
 }
 
 .label.highlighted {
     font-size: 10px;
-    top: 10px;
+    top: 8px;
 }

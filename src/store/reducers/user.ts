@@ -1,12 +1,13 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {OptionType} from '../../components/select/Select';
+import {OptionType} from '../../pages/form/Form';
 
 const userDataKeyForLS = 'userData'
 
-export const getUserFromLS = createAsyncThunk('getUserFromLS/user', (arg, {dispatch, rejectWithValue}) => {
+export const getUserFromLS = createAsyncThunk('getUserFromLS/user', (_, {dispatch, rejectWithValue}) => {
     try {
-        // @ts-ignore
-        const data = JSON.parse(localStorage.getItem(userDataKeyForLS))
+        const dataFromLS = localStorage.getItem(userDataKeyForLS)
+        if (!dataFromLS) return
+        const data = JSON.parse(dataFromLS)
         if (data) {
             dispatch(setUser(data))
         }
@@ -14,7 +15,7 @@ export const getUserFromLS = createAsyncThunk('getUserFromLS/user', (arg, {dispa
         rejectWithValue(e)
     }
 })
-export const deleteUserFromLS = createAsyncThunk('deleteUserFromLS/user', (arg, {dispatch, rejectWithValue}) => {
+export const deleteUserFromLS = createAsyncThunk('deleteUserFromLS/user', (_, {dispatch, rejectWithValue}) => {
     try {
         dispatch(clearUserData())
         localStorage.removeItem(userDataKeyForLS)

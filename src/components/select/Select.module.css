@@ -20,7 +20,7 @@
 .container.show {
     border-radius: 6px 6px 0 0;
     color: #1D1539;
-    border: 2px solid #C0BAD5;
+    border: 2px solid #EDE8F7;
 }
 
 .value {
@@ -48,7 +48,7 @@
 
 .options.show {
     display: block;
-    border: 2px solid #C0BAD5;
+    border: 2px solid #EDE8F7;
 }
 
 .option {
@@ -62,10 +62,6 @@
 .option.highlighted {
     background-color: #F8F7FA;
 }
-
-/*.option.selected {*/
-/*    background-color: #f1eeff;*/
-/*}*/
 
 .arrow {
     width: 9px;

@@ -5,6 +5,29 @@
     font-family: LetoSans, sans-serif;
 }
 
+.notification {
+    position: absolute;
+    padding: 10px 15px;
+    background: #333333;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 12px;
+    top: -45px;
+}
+
+.notification:after {
+    content: "";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #333333;
+    border-bottom: 10px solid transparent;
+    left: 10%;
+    top: 30px;
+}
+
 .input {
     height: 56px;
     width: 100%;

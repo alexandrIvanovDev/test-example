@@ -17,6 +17,7 @@ export const Input: FC<PropsType> = (props) => {
 
     return (
         <div className={classNames(cl.group, {}, [addClass])}>
+            {status === 'error' && <span className={cl.notification}>{placeholder}</span>}
             <input
                 type="text"
                 className={classNames(cl.input, {[cl.error]: !!status, [cl.success]: status === 'success'}, [])}

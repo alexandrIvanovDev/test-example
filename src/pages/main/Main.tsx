@@ -29,12 +29,12 @@ export const Main = () => {
             <div className={cl.formBlock}>
                 Form data:
                 {isLogged
-                    ? <div style={{marginTop: 20}}>
+                    ? <div className={cl.dataWrapper}>
                         <div><b>ФИО:</b> {user.name}</div>
-                        <div style={{marginTop: 10}}><b>E-mail:</b> {user.email}</div>
-                        <div style={{marginTop: 10}}><b>Тема:</b> {user.theme?.label}</div>
+                        <div className={cl.email}><b>E-mail:</b> {user.email}</div>
+                        <div className={cl.theme}><b>Тема:</b> {user.theme?.label}</div>
                     </div>
-                    : <div style={{marginTop: 20}}>Форма пока не заполнена</div>}
+                    : <div className={cl.emptyForm}>Форма пока не заполнена</div>}
             </div>
             <div>
                 <Button onClick={onClick}>{isLogged ? 'Изменить' : 'Заполнить форму'}</Button>

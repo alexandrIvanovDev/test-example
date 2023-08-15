@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter} from 'react-router-dom';
+import {createBrowserRouter, createHashRouter} from 'react-router-dom';
 import {Main} from './pages/main/Main';
 import {Form} from './pages/form/Form';
 import {Provider} from 'react-redux';
@@ -13,7 +13,7 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: '/',
         element: <Main/>

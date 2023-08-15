@@ -1,7 +1,7 @@
 import React, {FC, useState} from 'react';
 import cl from './Select.module.css'
-import classNames from 'classnames';
 import {OptionType} from '../../pages/form/Form';
+import {classNames} from '../../helpers/classNames/classNames';
 
 type PropsType = {
     addClass?: string
@@ -25,10 +25,10 @@ export const Select: FC<PropsType> = ({addClass, options, value, onChange}) => {
     }
 
     return (
-        <div className={classNames(cl.container, {[cl.show]: isOpen}, [addClass])} onClick={toggle}
+        <div className={classNames(cl.container, {[cl.show]: isOpen}, [addClass ?? ''])} onClick={toggle}
              onBlur={() => setIsOpen(false)} tabIndex={0}>
             <span className={cl.value}>{value?.label || null}</span>
-            <span className={classNames(cl.label, {[cl.show]: isOptionChosen || value})}>Тема сообщения</span>
+            {/*<span className={classNames(cl.label, {[cl.show]: isOptionChosen || value})}>Тема сообщения</span>*/}
             <div className={classNames(cl.arrow, {[cl.show]: isOpen})}></div>
             <ul className={classNames(cl.options, {[cl.show]: isOpen})}>
                 {options.map((option, index) => {

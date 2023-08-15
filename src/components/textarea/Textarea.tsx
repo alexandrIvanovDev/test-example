@@ -1,5 +1,6 @@
 import React, {FC, TextareaHTMLAttributes} from 'react';
 import cl from './Textarea.module.css'
+import {classNames} from '../../helpers/classNames/classNames';
 
 interface PropsType extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     addClass?: string
@@ -11,7 +12,7 @@ export const Textarea: FC<PropsType> = (props) => {
 
     return (
         <textarea
-            // className={classNames(addClass, cl.textarea)}
+            className={classNames(cl.textarea, {}, [addClass || ''])}
             {...otherProps}
         />
     )

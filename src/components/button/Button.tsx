@@ -11,7 +11,6 @@ export const Button: FC<PropsType> = (props) => {
     const {children, addClass, ...otherProps} = props
 
     return (
-        // <button className={classNames(addClass ?? '', cl.btn ?? '')} {...otherProps}>{children}</button>
-        <div>button</div>
+        <button className={classNames(cl.btn, {}, [addClass || ''])} {...otherProps}>{children}</button>
     );
 };

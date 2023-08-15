@@ -1,14 +1,19 @@
-import React, {ChangeEvent, FormEvent, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useState} from 'react';
 import cl from './Form.module.css'
 import {Button} from '../../components/button/Button';
 import {Textarea} from '../../components/textarea/Textarea';
-import {OptionType, Select} from '../../components/select/Select';
+import {Select} from '../../components/select/Select';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteUserFromLS, setUser, UserType} from '../../store/reducers/user';
 import {useNavigate} from 'react-router-dom';
 import {AppDispatch, AppStateType} from '../../store/store';
 import {Input} from '../../components/input/Input';
 import {isEmailValid} from '../../helpers/validate/validate-email';
+
+export type OptionType = {
+    label: string
+    value: string
+}
 
 const options: Array<OptionType> = [
     {value: 'theme1', label: 'Тема 1'},
@@ -19,16 +24,22 @@ const options: Array<OptionType> = [
 
 export const Form = () => {
 
-    const {name, email, theme} = useSelector((state: AppStateType) => state.user.user)
+    const {user, isLogged} = useSelector((state: AppStateType) => state.user)
 
-    const [nameValue, setNameValue] = useState(name || '')
-    const [emailValue, setEmailValue] = useState(email || '')
+    useEffect(() => {
+        if (isLogged) {
+            navigate('/form/edit')
+        }
+    }, []);
+
+    const [nameValue, setNameValue] = useState(user.name || '')
+    const [emailValue, setEmailValue] = useState(user.email || '')
     const [messageValue, setMessageValue] = useState('')
 
-    const [nameError, setNameError] = useState<string | null>(null)
+    const [nameStatus, setNameStatus] = useState<string | null>(null)
     const [emailStatus, setEmailStatus] = useState<string | null>(null)
 
-    const [selectValue, setSelectValue] = useState(theme || null)
+    const [selectValue, setSelectValue] = useState(user.theme || null)
 
     const onChangeSelectValue = (value: OptionType) => {
         setSelectValue(value)
@@ -42,7 +53,7 @@ export const Form = () => {
         setMessageValue('')
         setEmailValue('')
         setNameValue('')
-        setNameError(null)
+        setNameStatus(null)
         setEmailStatus(null)
         setSelectValue(null)
         if (nameValue === '' && emailValue === '') {
@@ -59,7 +70,7 @@ export const Form = () => {
             navigate('/')
         } else {
             if (nameValue.trim() === '') {
-                setNameError('error')
+                setNameStatus('error')
             }
             if (emailValue.trim() === '') {
                 setEmailStatus('error')
@@ -68,13 +79,13 @@ export const Form = () => {
     }
 
     const onNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        if (nameError) {
-            setNameError(null)
+        if (nameStatus) {
+            setNameStatus(null)
         }
-        setNameValue(e.target.value)
+        setNameValue(e.currentTarget.value)
     }
 
-    const emailHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    const onEmailHandler = (e: ChangeEvent<HTMLInputElement>) => {
         if (isEmailValid(emailValue)) {
             setEmailStatus('success')
         } else {
@@ -94,13 +105,13 @@ export const Form = () => {
                     onChangeValue={onNameHandler}
                     placeholder="Представьтесь пожалуйста"
                     id="name"
-                    status={nameError}
+                    status={nameStatus}
                 />
 
                 <Input
                     addClass={cl.input}
                     value={emailValue}
-                    onChangeValue={emailHandler}
+                    onChangeValue={onEmailHandler}
                     placeholder="Введите ваш e-mail"
                     id="email"
                     status={emailStatus}
@@ -122,7 +133,7 @@ export const Form = () => {
 
                 <div className={cl.btns}>
                     <Button addClass={cl.greyBtn} onClick={reset} type="reset">Сбросить</Button>
-                    <Button addClass={cl.sendBtn} type="submit" disabled={emailStatus === 'error' || !!nameError}>Отправить</Button>
+                    <Button addClass={cl.sendBtn} type="submit" disabled={emailStatus === 'error' || !!nameStatus}>Отправить</Button>
                 </div>
             </form>
         </div>

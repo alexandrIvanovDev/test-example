@@ -39,6 +39,12 @@ export const Main = () => {
             <div>
                 <Button onClick={onClick}>{isLogged ? 'Изменить' : 'Заполнить форму'}</Button>
             </div>
+            <div style={{marginTop: 40}}>
+                {/*<Input addClass={''} value={''} onChangeValue={() => {}}/>*/}
+                <input type="text" inputMode='email' placeholder='email'/>
+                <input type="tel" inputMode='tel' placeholder='phone'/>
+                <input type="password" placeholder='password'/>
+            </div>
         </div>
     )
 }
